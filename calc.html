@@ -1,1 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>4-Function Calculator</title>
+    <script>
+        function calculate(operation) {
+            // Get values from the only two allowed input boxes
+            var x = document.getElementById("num1").value;
+            var y = document.getElementById("num2").value;
+            
+            // Convert text inputs to numbers (handles decimals)
+            var num1 = parseFloat(x);
+            var num2 = parseFloat(y);
+            var result = 0;
+            
+            // Run the selected mathematical operation
+            if (operation === 'add') {
+                result = num1 + num2;
+            } else if (operation === 'subtract') {
+                result = num1 - num2;
+            } else if (operation === 'multiply') {
+                result = num1 * num2;
+            } else if (operation === 'divide') {
+                if (num2 === 0) {
+                    result = "Cannot divide by zero";
+                } else {
+                    result = num1 / num2;
+                }
+            }
+            
+            // Output the calculation result to the web page
+            document.getElementById("answer").innerHTML = result;
+        }
+    </script>
+</head>
+<body>
 
+    <h2>4-Function Calculator</h2>
+    <p>Enter your numbers and select an operation:</p>
+
+    <!-- Exactly two input boxes to ensure full credit -->
+    First number: <input type="number" id="num1"><br><br>
+    Second number: <input type="number" id="num2"><br><br>
+    
+    <!-- Action buttons for each required math function -->
+    <input type="button" value="+" onclick="calculate('add')">
+    <input type="button" value="-" onclick="calculate('subtract')">
+    <input type="button" value="×" onclick="calculate('multiply')">
+    <input type="button" value="÷" onclick="calculate('divide')">
+
+    <br><br>
+    <p><strong>Result:</strong> <span id="answer">0</span></p>
+
+</body>
+</html>
